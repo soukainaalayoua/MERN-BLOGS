@@ -5,4 +5,8 @@ frontend/node_modules/
 backend/.env/
 frontend/.env/
 
+backend/package.json/
+frontend/package.json/
+
+
 
