@@ -1,5 +1,6 @@
 // Import Express and create a router
 const router = require("express").Router();
+const { protect, protectAdmin } = require("../middlewares/auth");
 
 // Import the controller functions for handling cooking routes
 
@@ -14,10 +15,10 @@ const {
 // Define the routes for the music collection
 
 router.get("/", getALLcooking);
-router.post("/", createCooking);
+router.post("/", protect, protectAdmin, createCooking);
 router.get("/:id", getCookingByID);
-router.patch("/:id", updateCooking);
-router.delete("/:id", deleteCooking);
+router.patch("/:id/", protect, protectAdmin, updateCooking);
+router.delete("/:id/", protect, protectAdmin, deleteCooking);
 
 // Export the router so it can be used in other parts of the app
 

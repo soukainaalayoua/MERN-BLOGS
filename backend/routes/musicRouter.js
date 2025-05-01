@@ -1,5 +1,6 @@
 // Import Express and create a router
 const router = require("express").Router();
+const { protect, protectAdmin } = require("../middlewares/auth");
 
 // Import the controller functions for handling music routes
 const {
@@ -14,8 +15,8 @@ const {
 router.get("/", getALLMusic);
 router.post("/", createMusic);
 router.get("/:id", getMusicByID);
-router.patch("/:id", updateMusic);
-router.delete("/:id", deleteMusic);
+router.patch("/:id", protect, protectAdmin, updateMusic);
+router.delete("/:id", protect, protectAdmin, deleteMusic);
 
 // Export the router so it can be used in other parts of the app
 

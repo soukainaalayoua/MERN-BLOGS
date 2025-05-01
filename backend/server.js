@@ -13,6 +13,7 @@ const connectDB = require("./config/db");
 // import the router for the cooking and music collections
 const cookingRouter = require("./routes/cookingRouter");
 const MusicRouter = require("./routes/musicRouter");
+const authRoutes = require("./routes/authRoutes");
 // use the middleware
 app.use(bodyparser.json());
 app.use(
@@ -25,6 +26,7 @@ app.use(
 // defin the router
 app.use("/api/cooking", cookingRouter);
 app.use("/api/music", MusicRouter);
+app.use("/api/auth", authRoutes);
 
 // Connect to the database and start the server if successful
 connectDB()
